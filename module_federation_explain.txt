@@ -1,0 +1,24 @@
+Module Federation: The Proccess of loading separately complied applications at runtime. 
+
+(Host) 			(Remotes) 
+1000 ------------------> 1001
+	---------------> 1002
+
+
+webpack: 
+index.js
+barchart.js =====> main.js
+-----------------------------------------------
+webpack without module federation
+npm run start = npm run webpack => main.js/index.html
+----------------------------------------
+
+with module federation
+	main.js
+	src_index.js
+	vendors-node_modules_charts_index_js
+	remoteEntry.js -> Set of instruction to run src_index or charts_index_js
+
+============================================
+why bootstart.js required
+We are just giving time to webpack to figure out where that import coming from whether nodemoduels/webpack config  
