@@ -22,3 +22,11 @@ with module federation
 ============================================
 why bootstart.js required
 We are just giving time to webpack to figure out where that import coming from whether nodemoduels/webpack config  
+
+======================================================
+4 ways to manage State management for module federation
+1. prop drilling  -> Direclty pass Objects as Props to other module, Not gonna scale. 
+2. use context-> Using Context API "Provider" and "Consumer", we can pass state data. 
+3. Zustand: clean way to share state.
+4. redux toolkit: create separate container for store, then share it among other microfrontends
+

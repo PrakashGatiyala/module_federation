@@ -3,16 +3,15 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const path = require('path');
 const deps = require("./package.json").dependencies;
 
-
 module.exports = {
-    mode: "development",
+    mode : "development",
     entry: './src/index.js',
     output: {
-      filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
     },
-    devServer: {
-        port: 1000,
+    devServer : {
+        port:1003,
         static: {
             directory: path.join(__dirname, 'public'),
           },
@@ -33,27 +32,28 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: "container",
-            remotes: {
-                barchart: "barchart@http://localhost:1001/remoteEntry.js",
-                linechart: "linechart@http://localhost:1002/remoteEntry.js",
-                store : "store@http://localhost:1003/remoteEntry.js"
+            name: "store",
+            filename: "remoteEntry.js",
+            exposes : {
+                "./store" : "./src/store",
+                "./counterSlice" : "./src/counterSlice"
             },
             shared: {
-                ...deps,
-                react: {
-                  singleton: true,
-                  requiredVersion: deps.react,
-                },
-                "react-dom": {
-                  singleton: true,
-                  requiredVersion: deps["react-dom"],
-                },
+              ...deps,
+              react: {
+                singleton: true,
+                requiredVersion: deps.react,
               },
+              "react-dom": {
+                singleton: true,
+                requiredVersion: deps["react-dom"],
+              },
+            },
+            
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html"
-        })        
+        })
     ]
 
 }
