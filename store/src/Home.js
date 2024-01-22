@@ -1,26 +1,26 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from "store/counterSlice"
+import { decrement, increment } from './homeSlice'
 
-export function Counter() {
-    const count = useSelector((state) => state.counter.value);
+export function Home() {
+    const count = useSelector((state) => state.home.value);
     const dispatch = useDispatch()
 
   return (
-    <div style={{ width: '5vw', height: '5vh'}}>
+    <div>
       <div>
         <button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
-          Increment
+          Home_Increment
         </button>
         <span>{count}</span>
         <button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
-          Decrement
+          Home_Decrement
         </button>
       </div>
     </div>

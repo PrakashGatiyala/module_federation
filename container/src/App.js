@@ -3,6 +3,7 @@ import  Linechart from "linechart/Linechart";
 import {store} from "store/store";
 import { Provider } from 'react-redux'
 import { Counter } from './Counter';
+import { Home } from './Home';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <Linechart />
     {/* <div>Apps1</div>  */}
     <Counter /> 
+    <Home />
     </>
   )
 }

@@ -36,7 +36,8 @@ module.exports = {
             filename: "remoteEntry.js",
             exposes : {
                 "./store" : "./src/store",
-                "./counterSlice" : "./src/counterSlice"
+                "./counterSlice" : "./src/counterSlice",
+                "./homeSlice" : "./src/homeSlice"
             },
             shared: {
               ...deps,
